@@ -116,15 +116,49 @@ class LinkedList {
 
   /** getAt(idx): get val at idx. */
 
-  getAt(idx) {}
+  getAt(idx) {
+    if (idx < 0 || idx >= this.length) throw new Error("index out of bounds");
+
+    let currentNode = this.head;
+    for (let i = 0; i < idx; i++) {
+      currentNode = currentNode.next;
+    }
+
+    return currentNode.val;
+  }
 
   /** setAt(idx, val): set val at idx to val */
 
-  setAt(idx, val) {}
+  setAt(idx, val) {
+    let targetNode = this.get(idx);
+    targetNode.val = val;
+  }
 
   /** insertAt(idx, val): add node w/val before idx. */
 
-  insertAt(idx, val) {}
+  insertAt(idx, val) {
+    if (idx < 0 || idx > this.length) throw new Error("index out of bounds");
+
+    //handle scenarios where inserting a new head
+    if (this.length <= 1 || idx <= 1) {
+      this.unshift(val);
+      return;
+    }
+
+    const newNode = new Node(val);
+
+    //this is the node we want to insert the new node after, so idx-1
+    //idx -> node to insert new node before
+    const targetNode = this.get(idx - 1);
+
+    //prev->new->target
+    temp = targetNode.next;
+    targetNode.next = newNode;
+    newNode.next = temp;
+    //prev.next -> new
+
+    //new.next -> target
+  }
 
   /** removeAt(idx): return & remove item at idx, */
 
