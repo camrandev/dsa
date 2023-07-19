@@ -199,9 +199,20 @@ class LinkedList {
   /** average(): return an average of all values in the list */
 
   average() {
-    
+    if (this.length === 0) {
+      return 0;
+    }
 
+    let sum = 0;
 
+    let curr = this.head;
+
+    while (curr) {
+      sum += curr.val;
+      curr = curr.next;
+    }
+
+    return sum / this.length;
   }
 }
 
