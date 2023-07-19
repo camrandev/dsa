@@ -167,11 +167,42 @@ class LinkedList {
 
   /** removeAt(idx): return & remove item at idx, */
 
-  removeAt(idx) {}
+  removeAt(idx) {
+    if (idx < 0 || idx >= this.length) {
+      throw new Error("index out of bounds");
+    }
+
+    if (this.length === 1) {
+      const out = this.head.val;
+      this.head = null;
+      this.tail = null;
+      this.length--;
+      return out;
+    }
+
+    if (idx === 0) {
+      const out = this.head.val;
+      this.head = this.head.next;
+      this.length--;
+      return out;
+    }
+
+    const prevNode = this.get(idx - 1);
+    const targetNode = prevNode.next;
+
+    const out = targetNode.val;
+    prevNode.next = targetNode.next;
+    this.length--;
+    return out;
+  }
 
   /** average(): return an average of all values in the list */
 
-  average() {}
+  average() {
+    
+
+
+  }
 }
 
 module.exports = LinkedList;
