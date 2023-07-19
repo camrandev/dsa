@@ -214,6 +214,10 @@ class LinkedList {
 
     return sum / this.length;
   }
+
+  /** reverse a linkedList in place, does not return anything*/
+  reverseInPlace() {
+  }
 }
 
 module.exports = LinkedList;
