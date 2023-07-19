@@ -22,7 +22,7 @@ class LinkedList {
 
   /**access a node at a given index, throw error if idx is out of bounds */
   get(index) {
-    if (index < 0 || index >= this.length)
+    if (index < 0 || index > this.length)
       throw new Error("Index out of bounds");
 
     let currentNode = this.head;
@@ -137,27 +137,32 @@ class LinkedList {
   /** insertAt(idx, val): add node w/val before idx. */
 
   insertAt(idx, val) {
+    //check that idx is valid
     if (idx < 0 || idx > this.length) throw new Error("index out of bounds");
 
-    //handle scenarios where inserting a new head
-    if (this.length <= 1 || idx <= 1) {
+    //handle cases of length being 0 or 1
+    if (this.length <= 1) {
       this.unshift(val);
       return;
     }
 
+    //handle case of adding a new head
+    if (idx === 0) {
+      this.unshift(val);
+      return;
+    }
+
+    const targetNode = this.get(idx - 1);
     const newNode = new Node(val);
 
-    //this is the node we want to insert the new node after, so idx-1
-    //idx -> node to insert new node before
-    const targetNode = this.get(idx - 1);
+    if (idx !== this.length) {
+      newNode.next = targetNode.next;
+    } else {
+      this.tail = newNode;
+    }
 
-    //prev->new->target
-    temp = targetNode.next;
     targetNode.next = newNode;
-    newNode.next = temp;
-    //prev.next -> new
-
-    //new.next -> target
+    this.length++;
   }
 
   /** removeAt(idx): return & remove item at idx, */
