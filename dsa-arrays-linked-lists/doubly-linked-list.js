@@ -203,7 +203,10 @@ class DoublyLinkedList {
 
   /** setAt(idx, val): set val at idx to val */
 
-  setAt(idx, val) {}
+  setAt(idx, val) {
+    const targetNode = this._get(idx)
+    return targetNode.val = val
+  }
 
   /** insertAt(idx, val): add node w/val before idx. */
 
