@@ -154,7 +154,40 @@ class DoublyLinkedList {
 
   /** shift(): remove first item & return its value */
 
-  shift() {}
+  /**
+   * handle case of empty list -> raise an error
+   *
+   * handle case of single item list
+   *  save the single value
+   *  set the head + tail to null
+   *  decerement the length
+   *  return the saved value
+   *
+   * handle other cases
+   *  save the heads next node
+   *  save the current heads value
+   *  set saved next values prev value to null
+   *  set the DLL head to the saved next value
+   *  decrement the length
+   *  return the saved head
+   *
+   *
+   */
+
+  shift() {
+    if (this.length === 0) throw new Error("cannot shift an empty list");
+
+    if (this.length === 1) {
+      return this.pop();
+    }
+
+    const secondNode = this.head.next;
+    const out = this.head.val;
+    secondNode.prev = null;
+    this.head = secondNode;
+    this.length--;
+    return out;
+  }
 
   /** getAt(idx): get val at idx.*/
 
