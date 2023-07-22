@@ -220,16 +220,29 @@ class LinkedList {
   reverseInPlace() {
     if (this.length === 1) return;
 
+    //initial the previous to null -> makes sense, as it will be the new head next
+    //which when reversing will be null
     let prev = null;
+
+    //access the current node -> starts as the head
     let curr = this.head;
 
+    //while the curr node exists
     while (curr) {
+      //save the NEXT node
       const next = curr.next;
+
+      //set the current node next to the previous node
       curr.next = prev;
+
+      //set the previous to the current
       prev = curr;
+
+      //set the current to the next
       curr = next;
     }
 
+    //swap the head and tail pointers on the LL class, if the class keeps track of them
     [this.head, this.tail] = [this.tail, this.head];
   }
 }
