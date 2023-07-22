@@ -84,7 +84,30 @@ class DoublyLinkedList {
 
   /** unshift(val): add new value to start of list. */
 
-  unshift(val) {}
+  /**
+   * handle case of empty list using push
+   *
+   * handle other cases
+   *   create a new node
+   *   set the new nodes next to the current head
+   *   set the current heads prev to the new node
+   *   set the DLL head to the new node
+   *   increment the length
+   */
+
+  unshift(val) {
+    //handle case of empty list
+    if (this.length === 0) {
+      this.push(val);
+      return;
+    }
+
+    const newNode = new Node(val);
+    newNode.next = this.head;
+    this.head.prev = newNode;
+    this.head = newNode;
+    this.length++;
+  }
 
   /** pop(): remove last item & return its value */
 
