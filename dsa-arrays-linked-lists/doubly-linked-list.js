@@ -197,20 +197,65 @@ class DoublyLinkedList {
    */
 
   getAt(idx) {
-    const targetNode = this._get(idx)
-    return targetNode.val
+    const targetNode = this._get(idx);
+    return targetNode.val;
   }
 
   /** setAt(idx, val): set val at idx to val */
 
   setAt(idx, val) {
-    const targetNode = this._get(idx)
-    return targetNode.val = val
+    const targetNode = this._get(idx);
+    return (targetNode.val = val);
   }
 
   /** insertAt(idx, val): add node w/val before idx. */
 
-  insertAt(idx, val) {}
+  /**
+   * handle out of range
+   *
+   * handle empty
+   *
+   * handle adding new head
+   *
+   * handle adding new tail
+   *
+   * handle other cases
+   * A -> B -> C
+   *
+   * insertAt(1,Z)
+   *  create a new node
+   *  access the target node -> (1) -> B
+   *  access the prior node -> b.prev -> A
+   *
+   *  insert new node inbetween target + prior
+   *  A -> Z -> B -> C
+   *
+   * set prior.next -> new
+   * set new.next ->target
+   * set target.prev->new
+   * increment the length
+   *
+   */
+  insertAt(idx, val) {
+    if (idx < 0 || idx >= this.length) throw new Error("index out of bounds");
+
+    if (this.length === 0) {
+      this.push(val);
+      return;
+    }
+
+    //handle new head
+    if (idx === 0) {
+      this.unshift(val);
+      return;
+    }
+
+    //handle new tail
+    if (idx === this.length - 1) {
+      this.push(val);
+      return;
+    }
+  }
 
   /** removeAt(idx): return & remove item at idx, */
 
