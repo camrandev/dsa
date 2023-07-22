@@ -111,7 +111,46 @@ class DoublyLinkedList {
 
   /** pop(): remove last item & return its value */
 
-  pop() {}
+  /**
+   * handle case of empty list
+   * if the length is 0, throw an error
+   *
+   * handle case of single item list
+   *  check if the length is 1
+   *  if it is
+   *  save the value of the only node
+   *  set the head, tail to null
+   *  decrement the length
+   *  return the saved value
+   *
+   * handle other cases
+   *  save the tail
+   *  set the previous nodes next to null
+   *  set the DLL tail to the current tails prev pointer
+   *  decrement the length
+   *  returned the saved value
+   *
+   *
+   */
+
+  pop() {
+    if (this.length === 0) throw new Error("cannot pop an empty list");
+
+    if (this.length === 1) {
+      const out = this.head.val;
+      this.head = null;
+      this.tail = null;
+      this.length--;
+      return out;
+    }
+
+    const prev = this.tail.prev;
+    const out = this.tail.val;
+    prev.next = null;
+    this.tail = prev;
+    this.length--;
+    return out;
+  }
 
   /** shift(): remove first item & return its value */
 
