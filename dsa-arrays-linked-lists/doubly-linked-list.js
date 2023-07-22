@@ -191,7 +191,15 @@ class DoublyLinkedList {
 
   /** getAt(idx): get val at idx.*/
 
-  getAt(idx) {}
+  /**
+   * access the node at the target target idx using _get
+   * return the target nodes value
+   */
+
+  getAt(idx) {
+    const targetNode = this._get(idx)
+    return targetNode.val
+  }
 
   /** setAt(idx, val): set val at idx to val */
 
