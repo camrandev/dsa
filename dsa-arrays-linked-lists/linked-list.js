@@ -216,7 +216,21 @@ class LinkedList {
   }
 
   /** reverse a linkedList in place, does not return anything*/
+
   reverseInPlace() {
+    if (this.length === 1) return;
+
+    let prev = null;
+    let curr = this.head;
+
+    while (curr) {
+      const next = curr.next;
+      curr.next = prev;
+      prev = curr;
+      curr = next;
+    }
+
+    [this.head, this.tail] = [this.tail, this.head];
   }
 }
 
