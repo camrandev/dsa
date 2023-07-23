@@ -141,28 +141,28 @@ describe("setAt", function () {
 });
 
 describe("insertAt", function () {
-  // it("inserts node and adjusts nearby nodes", function () {
-  //   let dll = new DoublyLinkedList([5, 15]);
+  it("inserts node and adjusts nearby nodes", function () {
+    let dll = new DoublyLinkedList([5, 15]);
 
-  //   dll.insertAt(1, 10);
-  //   expect(dll.head.val).toBe(5);
-  //   expect(dll.head.next.val).toBe(10);
-  //   expect(dll.head.next.prev.val).toBe(5);
-  //   expect(dll.head.next.next.val).toBe(15);
-  //   expect(dll.head.next.next.prev.val).toBe(10);
-  //   expect(dll.tail.val).toBe(15);
-  //   expect(dll.length).toBe(3);
+    dll.insertAt(1, 10);
+    expect(dll.head.val).toBe(5);
+    expect(dll.head.next.val).toBe(10);
+    expect(dll.head.next.prev.val).toBe(5);
+    expect(dll.head.next.next.val).toBe(15);
+    expect(dll.head.next.next.prev.val).toBe(10);
+    expect(dll.tail.val).toBe(15);
+    expect(dll.length).toBe(3);
 
-  //   dll.insertAt(0, 1);
-  //   expect(dll.head.val).toBe(1);
-  //   expect(dll.tail.val).toBe(15);
-  //   expect(dll.length).toBe(4);
+    dll.insertAt(0, 1);
+    expect(dll.head.val).toBe(1);
+    expect(dll.tail.val).toBe(15);
+    expect(dll.length).toBe(4);
 
-  //   dll.insertAt(4, 20);
-  //   expect(dll.head.val).toBe(1);
-  //   expect(dll.tail.val).toBe(20);
-  //   expect(dll.length).toBe(5);
-  // });
+    dll.insertAt(4, 20);
+    expect(dll.head.val).toBe(1);
+    expect(dll.tail.val).toBe(20);
+    expect(dll.length).toBe(5);
+  });
 
   it("inserts into empty list", function () {
     let dll = new DoublyLinkedList();

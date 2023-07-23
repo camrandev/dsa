@@ -152,8 +152,8 @@ class LinkedList {
       return;
     }
 
-    const targetNode = this.get(idx - 1);
     const newNode = new Node(val);
+    const targetNode = this.get(idx - 1);
 
     if (idx !== this.length) {
       newNode.next = targetNode.next;

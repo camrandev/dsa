@@ -237,10 +237,12 @@ class DoublyLinkedList {
    *
    */
   insertAt(idx, val) {
-    if (idx < 0 || idx >= this.length) throw new Error("index out of bounds");
+    //for the guard on insert, need to make it strictly greater than the length
+    //otherwise cannot insert into an empty list
+    if (idx < 0 || idx > this.length) throw new Error("index out of bounds");
 
-    if (this.length === 0) {
-      this.push(val);
+    if (this.length <= 1) {
+      this.unshift(val);
       return;
     }
 
@@ -250,11 +252,24 @@ class DoublyLinkedList {
       return;
     }
 
-    //handle new tail
-    if (idx === this.length - 1) {
+    // handle new tail
+    // for the tail insertion
+    if (idx === this.length) {
       this.push(val);
       return;
     }
+
+    //handle other cases
+    const newNode = new Node(val);
+    const insertBefore = this._get(idx);
+    const insertAfter = insertBefore.prev;
+
+    insertAfter.next = newNode;
+    newNode.prev = insertAfter;
+    newNode.next = insertBefore;
+    insertBefore.prev = newNode;
+    this.length++;
+    return;
   }
 
   /** removeAt(idx): return & remove item at idx, */
