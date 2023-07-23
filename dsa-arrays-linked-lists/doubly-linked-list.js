@@ -330,7 +330,20 @@ class DoublyLinkedList {
 
   /** return average (mean) of list values. */
 
-  average() {}
+  average() {
+    if (this.length === 0) return 0;
+
+    let count = 0;
+
+    let curr = this.head;
+
+    while (curr) {
+      count += curr.val;
+      curr = curr.next;
+    }
+
+    return count / this.length;
+  }
 }
 
 module.exports = DoublyLinkedList;
