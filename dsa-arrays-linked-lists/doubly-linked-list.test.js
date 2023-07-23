@@ -197,6 +197,9 @@ describe("removeAt", function () {
     expect(dll.head.prev).toBe(null);
     expect(dll.length).toBe(2);
 
+    console.log('i ran')
+    //DLL: 10, 20,
+    //length: 2
     expect(dll.removeAt(1)).toBe(20);
     expect(dll.head.val).toBe(10);
     expect(dll.tail.val).toBe(10);

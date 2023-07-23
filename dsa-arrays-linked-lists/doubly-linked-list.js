@@ -272,9 +272,61 @@ class DoublyLinkedList {
     return;
   }
 
-  /** removeAt(idx): return & remove item at idx, */
+  /** removeAt(idx): remove node at idx and return its value*/
 
-  removeAt(idx) {}
+  /**
+   * throw an error if idx is out of bounds
+   *
+   * handle case of single item list
+   *  update head tail pointers
+   *  update length
+   *
+   * handle case of removing current head
+   * handle case of removing current tail
+   *
+   * handle all other cases
+   *  access the target node
+   *  access the target.prev
+   *  access the target.next
+   *  set prev ->next
+   *  set prev<-next
+   *  decrement length
+   *
+   */
+
+  removeAt(idx) {
+    //guard
+    if (idx < 0 || idx >= this.length) {
+      throw new Error("index out of bounds");
+    }
+
+    //handle case of single item list
+    if (this.length === 1) {
+      return this.shift();
+    }
+
+    //handle removing head
+    if (idx === 0) {
+      return this.shift();
+    }
+
+    //handle removing tail
+    if (idx === this.length - 1) {
+      return this.pop();
+    }
+
+    //handle other cases
+    const target = this._get(idx);
+    const prev = target.prev;
+    const next = target.next;
+    const out = target.val;
+
+    prev.next = next;
+
+    next.prev = prev;
+    this.length--;
+    return target.val;
+  }
 
   /** return average (mean) of list values. */
 
