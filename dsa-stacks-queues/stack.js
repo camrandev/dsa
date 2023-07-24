@@ -39,7 +39,11 @@ class Stack {
 
   /** peek(): return the value of the top node in the stack. */
 
-  peek() {}
+  peek() {
+    if (this.size === 0) throw new Error("stack is empty");
+
+    return this.top.val;
+  }
 
   /** isEmpty(): return true if the stack is empty, otherwise false */
 
