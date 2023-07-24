@@ -19,28 +19,42 @@ class Queue {
 
   /** enqueue(val): add new value to end of the queue. Returns undefined. */
 
-  enqueue(val) {
+  /**
+   * create a new node
+   *
+   * handle case of en empty list
+   *
+   * handle other cases
+   */
 
+  enqueue(val) {
+    const newNode = new Node(val);
+
+    if (this.size === 0) {
+      this.first = newNode;
+      this.last = newNode;
+      this.size++;
+      return;
+    }
+
+    this.last.next = newNode;
+    this.last = newNode;
+    this.size++;
+    return;
   }
 
   /** dequeue(): remove the node from the start of the queue
    * and return its value. Should throw an error if the queue is empty. */
 
-  dequeue() {
-
-  }
+  dequeue() {}
 
   /** peek(): return the value of the first node in the queue. */
 
-  peek() {
-
-  }
+  peek() {}
 
   /** isEmpty(): return true if the queue is empty, otherwise false */
 
-  isEmpty() {
-
-  }
+  isEmpty() {}
 }
 
 module.exports = Queue;
