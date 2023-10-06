@@ -1,6 +1,11 @@
 /** product: calculate the product of an array of numbers. */
 
 function product(nums) {
+  //base case: if nums is empty
+  if (!nums) return 1;
+
+  //recursive case: nums is not empty
+  return nums[0] * product(nums)
 
 }
 
