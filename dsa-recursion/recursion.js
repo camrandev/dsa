@@ -2,10 +2,11 @@
 
 function product(nums) {
   //base case: if nums is empty
-  if (!nums) return 1;
+  if (nums.length === 0) return 1;
 
   //recursive case: nums is not empty
-  return nums[0] * product(nums)
+  //return the first value in nums, times a recursive call, passing in the rest of the array
+  return nums[0] * product(nums.slice(1))
 
 }
 
